@@ -1,0 +1,69 @@
+# ================================================ #
+#              Unity Auto-Generated Files            #
+# ================================================ #
+
+# --- Unity generated --- #
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+
+# --- MemoryCaptures (Editor memory snapshots) --- #
+MemoryCaptures/
+
+# --- Asset meta data should be tracked, but never the assets themselves if they are auto-generated --- #
+# *.asset  # Usually tracked; uncomment if needed
+
+# --- Visual Studio / MonoDevelop / Rider --- #
+.vs/
+.idea/
+*.csproj
+*.sln
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+
+# --- VS Code (keep .vscode/ if sharing settings) --- #
+# .vscode/
+
+# --- OS generated --- #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# --- Unity packages (usually tracked; uncomment if unwanted) --- #
+# *.unitypackage
+
+# --- Crashlytics --- #
+Crashlytics/
+
+# --- Console logs --- #
+ExportedObj/
+
+# --- Autobuild --- #
+[Aa]uto[Bb]uild/
+
+# --- Other Unity generated --- #
+*.apk
+*.aab
+*.ap_
+*.bak
+*.orig
+*.tmp
+*.log
+
+# ================================================ #
+#              Project-Specific Ignores             #
+# ================================================ #
