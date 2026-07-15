@@ -51,5 +51,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Tank game.sln"
+    "dotnet.defaultSolution": "Tank game.sln",
+    "chat.byokUtilityModelDefault": "mainAgent"
 }
