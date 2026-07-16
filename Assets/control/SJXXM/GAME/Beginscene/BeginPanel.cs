@@ -22,7 +22,8 @@ public class BeginPanel : BasePanel<BeginPanel>
         };
         btnsetting.ClickEvent += () =>
         {
-            
+            settingpanel.Instance.ShowMe();
+            HideMe();
         };
         btnquit.ClickEvent += () =>
         {

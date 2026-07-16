@@ -9,10 +9,10 @@ public class CustomGuiToggle : CustomGuicontrol
     public bool issel;
     public event UnityAction<bool> changevalue; 
 
-    public bool isoldsel;
+    private bool isoldsel;
     protected override void Drawstyleoff()
     {
-        GUI.Toggle(guipos.Pos,issel,guicontent);
+        issel = GUI.Toggle(guipos.Pos,issel,guicontent);
         if(isoldsel!=issel)
         {
             changevalue?.Invoke(issel);
@@ -23,7 +23,7 @@ public class CustomGuiToggle : CustomGuicontrol
 
     protected override void Drawstyleon()
     {
-        GUI.Toggle(guipos.Pos,issel,guicontent,guistyle);
+        issel = GUI.Toggle(guipos.Pos,issel,guicontent,guistyle);
         if(isoldsel!=issel)
         {
         changevalue?.Invoke(issel);
