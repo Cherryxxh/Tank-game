@@ -64,7 +64,7 @@ public class GameDatamgr
     public void isopenbkmusic(bool isopen)
     {
         musicData.isopenbkmusic = isopen;
-        Bkmusic.Instance.changeopen(isopen);
+        Bkmusic.Instance?.changeopen(isopen);
         PlayerprefsdataMgr.Instance.SaveData(musicData, "musicData");
     }
 
@@ -82,7 +82,10 @@ public class GameDatamgr
     public void musicvolue(float volue)
     {
         musicData.musicvolue = volue;
-        Bkmusic.Instance.changevalue(volue);
+        if (Bkmusic.Instance == null)
+            Debug.LogWarning("Bkmusic.Instance 是 null！脚本没挂到场景的 Bkmusic 物体上！");
+        else
+            Bkmusic.Instance.changevalue(volue);
         PlayerprefsdataMgr.Instance.SaveData(musicData, "musicData");
     }
 

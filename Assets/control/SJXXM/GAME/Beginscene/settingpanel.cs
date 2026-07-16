@@ -78,5 +78,8 @@ public class settingpanel : BasePanel<settingpanel>
     {
         base.ShowMe();
         Updatapanelinfo();
+
+        Debug.Log($"tog_music={tog_music != null}, tog_sound={tog_sound != null}, " +
+              $"slider_music={slider_music != null}, slider_sound={slider_sound != null}");
     }
 }
