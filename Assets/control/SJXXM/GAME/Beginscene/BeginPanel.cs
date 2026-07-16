@@ -48,7 +48,8 @@ public class BeginPanel : BasePanel<BeginPanel>
         // 排行榜（暂未实现）
         btnrank.ClickEvent += () =>
         {
-
+            Rankpanel.Instance.ShowMe();
+            HideMe();
         };
     }
 

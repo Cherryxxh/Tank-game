@@ -8,8 +8,11 @@ using UnityEngine;
 /// </summary>
 public class Rankpanel : BasePanel<Rankpanel>
 {
+
+    public CustomGuiButton btnback;
+
     /// <summary>排名列 Label 列表（1-10 名）</summary>
-    private List<CustomGuiLab> rankLabels = new List<CustomGuiLab>();
+
 
     /// <summary>名称列 Label 列表</summary>
     private List<CustomGuiLab> nameLabels = new List<CustomGuiLab>();
@@ -25,9 +28,51 @@ public class Rankpanel : BasePanel<Rankpanel>
     /// </summary>
     void Start()
     {
-        for(int i = 1; i <= 10; i++)
+        for(int i = 1; i <= 9; i++)
         {
-            // TODO: 从数据源加载排行榜数据并填充 Label
+
+        nameLabels.Add(this.transform.Find($"Name/name{i}").GetComponent<CustomGuiLab>());
+        timeLabels.Add(this.transform.Find($"ThroughTime/throughtime{i}").GetComponent<CustomGuiLab>());
+        scoreLabels.Add(this.transform.Find($"Garden/garden{i}").GetComponent<CustomGuiLab>());
+        }
+
+        btnback.ClickEvent += () =>
+        {
+            HideMe();
+            BeginPanel.Instance.ShowMe();
+        };
+        
+
+        HideMe();
+    }
+    public override void ShowMe()
+    {
+        base.ShowMe();
+        rankupdate();
+    }
+    public void rankupdate()
+    {
+        List<Rankinfo> rankList = GameDatamgr.Instance.rankdata.rankklist;
+
+        for(int i = 0; i < rankList.Count; i++)
+        {
+            nameLabels[i].guicontent.text = rankList[i].name;
+            scoreLabels[i].guicontent.text = rankList[i].score.ToString();
+            int time = (int)rankList[i].time;
+            timeLabels[i].guicontent.text = "";
+            if(time/3600 > 0)
+            {
+                timeLabels[i].guicontent.text += time/3600 + "时";
+            }
+            if(time%3600/60 > 0||timeLabels[i].guicontent.text != "")
+            {
+                timeLabels[i].guicontent.text += time%3600/60 + "分";
+            }
+            
+                timeLabels[i].guicontent.text += time%60 + "秒";
+            
         }
     }
+
+
 }

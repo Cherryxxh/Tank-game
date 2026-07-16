@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-
-/// <summary>
+using UnityEngine;/// <summary>
 /// 游戏数据管理器（单例）
 /// 管理音乐/音效等全局设置数据，提供读写接口并自动持久化到 PlayerPrefs
 /// </summary>
@@ -16,6 +14,8 @@ public class GameDatamgr
 
     /// <summary>音乐/音效设置数据</summary>
     public MusicData musicData;
+
+    public RankList rankdata;
 
     /// <summary>
     /// 私有构造函数，首次访问时自动加载持久化数据
@@ -36,6 +36,27 @@ public class GameDatamgr
             musicData.musicvolue = 1;
             PlayerprefsdataMgr.Instance.SaveData(musicData, "musicData");
         }
+
+
+        rankdata = PlayerprefsdataMgr.Instance.
+        LoadData(typeof(RankList), "rankList") as RankList;
+        if (rankdata == null)
+        {
+            rankdata = new RankList();
+            PlayerprefsdataMgr.Instance.SaveData(rankdata, "rankList");
+        }
+    }
+
+
+    public void AddRankinfo(string name, int score, float time)
+    {
+        rankdata.rankklist.Add(new Rankinfo(name, score, time));
+        rankdata.rankklist.Sort((a, b) => a.time<b.time?-1:1);
+        for(int i = rankdata.rankklist.Count-1; i >= 9; i--)
+        {
+            rankdata.rankklist.RemoveAt(i);
+        }
+        PlayerprefsdataMgr.Instance.SaveData(rankdata, "rankList");
     }
 
     /// <summary>设置背景音乐开关状态并保存</summary>
@@ -69,4 +90,5 @@ public class GameDatamgr
         musicData.soundvolue = volue;
         PlayerprefsdataMgr.Instance.SaveData(musicData, "musicData");
     }
+    
 }
