@@ -3,15 +3,22 @@ using UnityEditor;
 using System.Collections.Generic;
 
 /// <summary>
-/// 一键整理 RankPanel：去掉括号，加分类前缀，分到四个父物体中
-/// 使用方法：菜单栏 Tools → Reorganize RankPanel
+/// 一键整理 RankPanel：创建分类文件夹，将条目按类别归类，去掉括号并重命名为 "前缀+数字" 格式
+/// 例: "rank (1)" → 移动到 Rank/ 下 → 重命名为 "rank1"
+/// 使用方法: 菜单栏 Tools → Reorganize RankPanel
 /// </summary>
 public class ReorganizeRankPanel : EditorWindow
 {
+    /// <summary>四个分类文件夹名称</summary>
     private static readonly string[] Categories = { "Rank", "Name", "ThroughTime", "Garden" };
+
+    /// <summary>匹配关键词（用于判断条目的归属分类）</summary>
     private static readonly string[] Keywords   = { "rank", "name", "through time", "graden" };
+
+    /// <summary>重命名前缀（对应四个分类）</summary>
     private static readonly string[] Prefixes   = { "rank", "name", "throughtime", "garden" };
 
+    /// <summary>执行整理操作（菜单入口）</summary>
     [MenuItem("Tools/Reorganize RankPanel")]
     public static void Execute()
     {
@@ -33,7 +40,7 @@ public class ReorganizeRankPanel : EditorWindow
             parents[i] = go.transform;
         }
 
-        // 2. 收集所有子物体
+        // 2. 收集所有当前子物体
         int childCount = root.childCount;
         List<Transform> all = new List<Transform>();
         for (int i = 0; i < childCount; i++)
@@ -53,14 +60,13 @@ public class ReorganizeRankPanel : EditorWindow
             // 3. 提取括号里的数字（如 "rank (3)" → "3"）
             string num = ExtractNumber(oldName);
             if (string.IsNullOrEmpty(num))
-                num = oldName; // 没有括号就用原名
+                num = oldName;
 
-            // 4. 匹配分类
+            // 4. 匹配分类并移动重命名
             for (int i = 0; i < Keywords.Length; i++)
             {
                 if (oldName.ToLower().Contains(Keywords[i]))
                 {
-                    // 5. 命名：前缀 + 数字 → "rank3"
                     string newName = Prefixes[i] + num;
 
                     child.SetParent(parents[i]);
@@ -76,6 +82,11 @@ public class ReorganizeRankPanel : EditorWindow
         EditorUtility.DisplayDialog("完成", $"整理完成!\n\n处理 {count} 个对象\n重命名并分类到:\n  - Rank\n  - Name\n  - ThroughTime\n  - Garden", "确定");
     }
 
+    /// <summary>
+    /// 从名称字符串中提取括号内的数字
+    /// </summary>
+    /// <param name="name">如 "rank (3)"</param>
+    /// <returns>如 "3"，如果没有括号则返回 null</returns>
     private static string ExtractNumber(string name)
     {
         int s = name.IndexOf('(');

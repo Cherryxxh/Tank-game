@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Lesson1 示例脚本（学习用空模板）
+/// </summary>
 public class lesson1 : MonoBehaviour
 {
-    // Start is called before the first frame update
+    /// <summary>游戏初始化时调用一次</summary>
     void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
+    /// <summary>每帧调用一次</summary>
     void Update()
     {
-        
+
     }
 }

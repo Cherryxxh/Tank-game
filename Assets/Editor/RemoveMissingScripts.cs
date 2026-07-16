@@ -4,19 +4,23 @@ using System.Collections.Generic;
 using System.IO;
 
 /// <summary>
-/// 批量移除预制体上的 Missing Script
-/// 菜单路径: Tools → Remove Missing Scripts
+/// 批量移除预制体上的 Missing Script 组件
+/// 适用于从其他项目拷贝美术资源后，预制体引用丢失的情况
+/// 使用方法: 菜单栏 Tools → Remove Missing Scripts From ArtRes
 /// </summary>
 public class RemoveMissingScripts : EditorWindow
 {
+    /// <summary>默认扫描路径</summary>
     private string folderPath = "Assets/ArtRes/TDSTK";
 
+    /// <summary>打开工具窗口（菜单入口）</summary>
     [MenuItem("Tools/Remove Missing Scripts From ArtRes")]
     public static void ShowWindow()
     {
         GetWindow<RemoveMissingScripts>("Remove Missing Scripts");
     }
 
+    /// <summary>绘制工具窗口 UI</summary>
     private void OnGUI()
     {
         GUILayout.Label("移除预制体上的 Missing Script", EditorStyles.boldLabel);
@@ -37,8 +41,10 @@ public class RemoveMissingScripts : EditorWindow
     }
 
     /// <summary>
-    /// 批量移除指定文件夹下所有 prefab 的 Missing Script
+    /// 批量移除指定文件夹下所有 prefab 的 Missing Script 组件
+    /// 递归扫描，加载每个预制体，清除丢失的脚本引用，保存并刷新数据库
     /// </summary>
+    /// <param name="folderPath">目标文件夹的 Asset 路径，如 "Assets/ArtRes/TDSTK"</param>
     public static void RemoveAllMissingScripts(string folderPath)
     {
         if (!AssetDatabase.IsValidFolder(folderPath))

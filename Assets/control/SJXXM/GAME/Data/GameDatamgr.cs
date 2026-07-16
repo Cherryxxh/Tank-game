@@ -2,52 +2,71 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 游戏数据管理器（单例）
+/// 管理音乐/音效等全局设置数据，提供读写接口并自动持久化到 PlayerPrefs
+/// </summary>
 public class GameDatamgr
 {
+    /// <summary>单例实例（私有构造函数 + 立即初始化）</summary>
     private static GameDatamgr instance = new GameDatamgr();
 
-    public static GameDatamgr Instance { get => instance;  }
-    
+    /// <summary>获取单例入口</summary>
+    public static GameDatamgr Instance { get => instance; }
+
+    /// <summary>音乐/音效设置数据</summary>
     public MusicData musicData;
+
+    /// <summary>
+    /// 私有构造函数，首次访问时自动加载持久化数据
+    /// 如果是首次运行，初始化默认值并保存
+    /// </summary>
     private GameDatamgr()
     {
         musicData = PlayerprefsdataMgr.Instance.
-        LoadData(typeof(MusicData),"musicData") as MusicData;
-
-
+        LoadData(typeof(MusicData), "musicData") as MusicData;
 
         if (!musicData.notfirstopen)
         {
+            // 首次打开：设置默认值（音乐开、音效开、音量满）
             musicData.notfirstopen = true;
             musicData.isopenbkmusic = true;
             musicData.isopensound = true;
             musicData.soundvolue = 1;
             musicData.musicvolue = 1;
-            PlayerprefsdataMgr.Instance.SaveData(musicData,"musicData");
+            PlayerprefsdataMgr.Instance.SaveData(musicData, "musicData");
         }
     }
 
+    /// <summary>设置背景音乐开关状态并保存</summary>
+    /// <param name="isopen">true=开启，false=关闭</param>
     public void isopenbkmusic(bool isopen)
     {
         musicData.isopenbkmusic = isopen;
-        PlayerprefsdataMgr.Instance.SaveData(musicData,"musicData");
+        PlayerprefsdataMgr.Instance.SaveData(musicData, "musicData");
     }
 
+    /// <summary>设置音效开关状态并保存</summary>
+    /// <param name="isopen">true=开启，false=关闭</param>
     public void isopensound(bool isopen)
     {
         musicData.isopensound = isopen;
-        PlayerprefsdataMgr.Instance.SaveData(musicData,"musicData");
+        PlayerprefsdataMgr.Instance.SaveData(musicData, "musicData");
     }
 
+    /// <summary>设置背景音乐音量并保存</summary>
+    /// <param name="volue">音量值（0~1）</param>
     public void musicvolue(float volue)
     {
         musicData.musicvolue = volue;
-        PlayerprefsdataMgr.Instance.SaveData(musicData,"musicData");
+        PlayerprefsdataMgr.Instance.SaveData(musicData, "musicData");
     }
 
+    /// <summary>设置音效音量并保存</summary>
+    /// <param name="volue">音量值（0~1）</param>
     public void soundvolue(float volue)
     {
         musicData.soundvolue = volue;
-        PlayerprefsdataMgr.Instance.SaveData(musicData,"musicData");
+        PlayerprefsdataMgr.Instance.SaveData(musicData, "musicData");
     }
 }
