@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// 设置面板
@@ -32,7 +33,15 @@ public class settingpanel : BasePanel<settingpanel>
         btnback.ClickEvent += () =>
         {
             HideMe();
-            BeginPanel.Instance.ShowMe();
+            if(SceneManager.GetActiveScene().name == "Beginscene")
+            {
+                BeginPanel.Instance.ShowMe();
+            }
+            else if(SceneManager.GetActiveScene().name == "Gamescene")
+            {
+                Gamepanel.Instance.ShowMe();
+                Time.timeScale = 1;
+            }
         };
 
         // 音乐音量变化 → 保存到 GameDatamgr
@@ -78,8 +87,8 @@ public class settingpanel : BasePanel<settingpanel>
     {
         base.ShowMe();
         Updatapanelinfo();
+        Time.timeScale = 0; // 暂停游戏时间
 
-        Debug.Log($"tog_music={tog_music != null}, tog_sound={tog_sound != null}, " +
-              $"slider_music={slider_music != null}, slider_sound={slider_sound != null}");
+        
     }
 }

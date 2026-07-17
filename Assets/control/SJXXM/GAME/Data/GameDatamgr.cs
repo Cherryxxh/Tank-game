@@ -17,6 +17,8 @@ public class GameDatamgr
 
     public RankList rankdata;
 
+    
+
     /// <summary>
     /// 私有构造函数，首次访问时自动加载持久化数据
     /// 如果是首次运行，初始化默认值并保存

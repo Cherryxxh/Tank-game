@@ -1,10 +1,10 @@
 {
-  "unity_port": -1,
-  "stream_port": 64390,
+  "unity_port": 63511,
+  "stream_port": 57382,
   "created_date": "2026-05-29T10:04:45.4573125Z",
   "project_path": "D:/unity/unity project/Tank game/Assets",
   "reloading": false,
-  "reason": "stopped",
+  "reason": "ready",
   "seq": 1,
-  "last_heartbeat": "2026-07-16T14:38:57.5610274Z"
+  "last_heartbeat": "2026-07-17T06:10:38.5863079Z"
 }

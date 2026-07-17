@@ -3414,7 +3414,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6690806479338358163, guid: d181c4660dd89fc4a905100b7e1df764, type: 3}
       propertyPath: guipos.width
-      value: 1300
+      value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: 6690806479338358163, guid: d181c4660dd89fc4a905100b7e1df764, type: 3}
       propertyPath: guistyletype
@@ -3422,7 +3422,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6690806479338358163, guid: d181c4660dd89fc4a905100b7e1df764, type: 3}
       propertyPath: guipos.height
-      value: 600
+      value: 1500
       objectReference: {fileID: 0}
     - target: {fileID: 6690806479338358163, guid: d181c4660dd89fc4a905100b7e1df764, type: 3}
       propertyPath: guicontent.m_Image
@@ -3988,7 +3988,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6690806479338358163, guid: d181c4660dd89fc4a905100b7e1df764, type: 3}
       propertyPath: guipos.width
-      value: 1300
+      value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: 6690806479338358163, guid: d181c4660dd89fc4a905100b7e1df764, type: 3}
       propertyPath: guistyletype
@@ -3996,7 +3996,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6690806479338358163, guid: d181c4660dd89fc4a905100b7e1df764, type: 3}
       propertyPath: guipos.height
-      value: 600
+      value: 1500
       objectReference: {fileID: 0}
     - target: {fileID: 6690806479338358163, guid: d181c4660dd89fc4a905100b7e1df764, type: 3}
       propertyPath: guicontent.m_Image
