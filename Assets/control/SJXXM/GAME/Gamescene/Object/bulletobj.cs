@@ -21,8 +21,16 @@ public class bulletobj : MonoBehaviour
     {
         
 
-        if(other.CompareTag("cube"))
+        if(other.CompareTag("cube")||
+        other.CompareTag("Player")&&fatherobj.CompareTag("Monster")
+        ||other.CompareTag("Monster")&&fatherobj.CompareTag("Player"))
         {
+            Tankbase tankbase = other.GetComponent<Tankbase>();
+            if(tankbase != null)
+            {
+                tankbase.Wound(fatherobj);
+            }
+
             if(effobj != null)
             {
             GameObject eff = Instantiate(effobj, this.transform.position, 
