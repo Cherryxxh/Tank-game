@@ -9,6 +9,8 @@ public class bulletobj : MonoBehaviour
 
     public float movespeed = 50f;
 
+    public GameObject effobj;
+
     public void Setfather(Tankbase father)
     {
         fatherobj = father;
@@ -17,8 +19,18 @@ public class bulletobj : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        
+
         if(other.CompareTag("cube"))
         {
+            if(effobj != null)
+            {
+            GameObject eff = Instantiate(effobj, this.transform.position, 
+            this.transform.rotation);
+            AudioSource audio = eff.GetComponent<AudioSource>();
+            audio.volume = GameDatamgr.Instance.musicData.soundvolue;
+            audio.mute = !GameDatamgr.Instance.musicData.isopensound;
+            }
             Destroy(gameObject);
         }
         
