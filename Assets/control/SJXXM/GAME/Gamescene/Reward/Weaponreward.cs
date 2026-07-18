@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class Weaponreward : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject[] weaponobj;
 
-    // Update is called once per frame
-    void Update()
+    public GameObject getobj;
+
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if(other.CompareTag("Player"))
+        {
+            int index = Random.Range(0, weaponobj.Length);
+            Playerobj player = other.GetComponent<Playerobj>();
+            player.changeweapon(weaponobj[index]);
+            GameObject eff =  Instantiate(getobj, this.transform.position,
+             this.transform.rotation);
+            AudioSource audio = eff.GetComponent<AudioSource>();
+            audio.volume = GameDatamgr.Instance.musicData.soundvolue;
+            audio.mute = GameDatamgr.Instance.musicData.isopensound;
+             
+            Destroy(gameObject);
+
+        }
     }
 }

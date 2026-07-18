@@ -6,6 +6,13 @@ public class Playerobj : Tankbase
 {
     public Weaponobj weapon;
 
+
+    public Transform weaponpos;
+
+    [Header("开火设置")]
+    public float fireInterval = 0.2f;
+    private float fireTimer;
+
     public override void Attack()
     {
         if (weapon != null)
@@ -17,6 +24,22 @@ public class Playerobj : Tankbase
     public override void Die()
     {
         base.Die();
+    }
+
+    public void changeweapon(GameObject weaponobj)
+    {
+        if(weaponobj != null)
+        {
+            if(weapon != null)
+            {
+                Destroy(weapon.gameObject);
+                weapon = null;
+            }
+        }
+
+        GameObject newweapon = Instantiate(weaponobj, weaponpos,false);
+        weapon = newweapon.GetComponent<Weaponobj>();
+        weapon.Setowner(this);
     }
 
     public override void Wound(Tankbase other)
@@ -40,9 +63,19 @@ public class Playerobj : Tankbase
         * rotateroundSpeed * Time.deltaTime);
         tankhead.transform.Rotate(Input.GetAxis("Mouse X") * Vector3.up 
         * rotateheadSpeed * Time.deltaTime);
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
-            this.Attack();
+            fireTimer += Time.deltaTime;
+            if (fireTimer >= fireInterval)
+            {
+                Attack();
+                fireTimer = 0f;
+            }
         }
+        else
+        {
+            fireTimer = fireInterval;
+        }
+
     }
 }

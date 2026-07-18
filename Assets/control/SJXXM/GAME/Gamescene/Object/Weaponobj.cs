@@ -17,7 +17,7 @@ public class Weaponobj : MonoBehaviour
     
     public void Shoot()
     {
-        Debug.Log($"Shoot() 被调用，发射 {shootpos.Length} 发子弹，调用栈: {System.Environment.StackTrace}");
+        
         for (int i = 0; i < shootpos.Length; i++)
         {
             GameObject obj = Instantiate(bullet,
