@@ -26,6 +26,9 @@ public class BeginPanel : BasePanel<BeginPanel>
     /// </summary>
     void Start()
     {
+
+        Cursor.lockState = CursorLockMode.Confined;
+
         // 开始游戏 → 加载游戏场景
         btnbegin.ClickEvent += () =>
         {

@@ -19,7 +19,7 @@ public class Weaponreward : MonoBehaviour
              this.transform.rotation);
             AudioSource audio = eff.GetComponent<AudioSource>();
             audio.volume = GameDatamgr.Instance.musicData.soundvolue;
-            audio.mute = GameDatamgr.Instance.musicData.isopensound;
+            audio.mute = !GameDatamgr.Instance.musicData.isopensound;
              
             Destroy(gameObject);
 

@@ -23,7 +23,9 @@ public class Playerobj : Tankbase
 
     public override void Die()
     {
-        base.Die();
+        
+        Time.timeScale = 0;
+        losepanel.Instance.ShowMe();
     }
 
     public void changeweapon(GameObject weaponobj)
