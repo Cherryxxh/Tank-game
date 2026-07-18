@@ -1328,7 +1328,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 706211cb0f4532249934b4509331ca8b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8305a178512c8b846b8b47b9c0670565, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -5831,12 +5831,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1366373674}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef82a81411014c34c919e31883e18add, type: 3}
+  m_Script: {fileID: 11500000, guid: fa168ed0964b5f246980debb5755949e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quitbtn: {fileID: 732528961}
-  backbtn: {fileID: 0}
-  conbtn: {fileID: 1388776096}
+  againbtn: {fileID: 732528961}
+  exitbtn: {fileID: 1388776096}
 --- !u!1001 &1383140866
 PrefabInstance:
   m_ObjectHideFlags: 0
