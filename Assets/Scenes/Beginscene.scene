@@ -1227,7 +1227,7 @@ PrefabInstance:
       objectReference: {fileID: 12800000, guid: b612cf87de146be40bd20e17e480a609, type: 3}
     - target: {fileID: 415002108435676743, guid: bf850df54c157b5468a0cc5bd9089939, type: 3}
       propertyPath: guicontent.m_Text
-      value: "\u5766\u514B\u5927\u6218"
+      value: "\u5FE7\u90C1\u5766\u514B"
       objectReference: {fileID: 0}
     - target: {fileID: 415002108435676743, guid: bf850df54c157b5468a0cc5bd9089939, type: 3}
       propertyPath: guicontent.m_Image
@@ -2232,7 +2232,7 @@ PrefabInstance:
       objectReference: {fileID: 12800000, guid: b612cf87de146be40bd20e17e480a609, type: 3}
     - target: {fileID: 415002108435676743, guid: bf850df54c157b5468a0cc5bd9089939, type: 3}
       propertyPath: guicontent.m_Text
-      value: "\u5766\u514B\u5927\u6218"
+      value: "\u5FE7\u90C1\u5766\u514B"
       objectReference: {fileID: 0}
     - target: {fileID: 415002108435676743, guid: bf850df54c157b5468a0cc5bd9089939, type: 3}
       propertyPath: guicontent.m_Image
